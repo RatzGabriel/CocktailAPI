@@ -1,0 +1,1 @@
+(()=>{"use strict";window.onload=function(){!async function(){console.log("test"),await fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=blu").then((o=>o.json().then((o=>console.log(o)))))}()}})();
