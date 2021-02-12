@@ -1,6 +1,5 @@
 const dom = (function () {
   const cards = function (result) {
-    console.log(result);
     const cardDiv = document.querySelector(".cards");
     cardDiv.innerHTML = "";
     for (let elem of result.drinks) {
@@ -19,12 +18,21 @@ const dom = (function () {
   };
 
   const domSelected = function (elem) {
+    const searchbar = document.querySelector(".searchbar");
+    searchbar.classList.add("notvis");
     const container = document.createElement("div");
+    const containerAllIng = document.createElement("div");
+    containerAllIng.classList.add("containerAllIng");
+
+    container.classList.add("containerIng");
     const img = document.createElement("img");
     const title = document.createElement("h3");
     const instr = document.createElement("p");
     const body = document.querySelector("body");
-    body.innerHTML = "";
+    const btnHome = document.createElement("button");
+    const cards = document.querySelector(".cards");
+    cards.innerHTML = "";
+    btnHome.innerText = "Home";
     img.src = elem.strDrinkThumb;
     title.innerText = elem.strDrink;
     instr.innerText = elem.strInstructions;
@@ -42,10 +50,19 @@ const dom = (function () {
       }
     }
 
+    btnHome.addEventListener("click", async function () {
+      const searchbar = document.querySelector(".searchbar");
+      const container = document.querySelector(".containerAllIng");
+      container.remove();
+      container.innerHTML = "";
+      searchbar.classList.remove("notvis");
+    });
     container.appendChild(title);
     container.appendChild(img);
     container.appendChild(instr);
-    body.appendChild(container);
+    container.appendChild(btnHome);
+    containerAllIng.appendChild(container);
+    body.appendChild(containerAllIng);
   };
   return { cards };
 })();
