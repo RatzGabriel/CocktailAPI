@@ -2,6 +2,12 @@ const dom = (function () {
   const cards = function (result) {
     const cardDiv = document.querySelector(".cards");
     cardDiv.innerHTML = "";
+    if (result.drinks == null) {
+      const p = document.createElement("h3");
+      p.innerText = "OUPS COULDNT FIND WHAT YOUR LOOKING FOR";
+      const cardDiv = document.querySelector(".cards");
+      cardDiv.appendChild(p);
+    }
     for (let elem of result.drinks) {
       const text = document.createElement("p");
       const image = document.createElement("img");
